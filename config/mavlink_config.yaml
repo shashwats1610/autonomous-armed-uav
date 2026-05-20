@@ -1,0 +1,56 @@
+# MAVLink serial connection settings
+
+# Serial device paths to try in order (auto-detect)
+serial_ports:
+  - /dev/ttyACM0
+  - /dev/ttyUSB0
+
+# Baud rate (standard Pixhawk telemetry)
+baud_rate: 57600
+
+# Target autopilot system/component IDs
+target_system: 1
+target_component: 1
+
+# Companion computer MAVLink identity
+source_system: 255
+source_component: 190
+
+# Seconds without HEARTBEAT before reconnect
+heartbeat_timeout_s: 5.0
+
+# Boot wait for Pixhawk connection (seconds)
+connection_timeout_s: 120.0
+
+# Initial reconnect backoff (seconds), doubles up to max
+reconnect_initial_s: 1.0
+reconnect_max_s: 30.0
+
+# Outbound command queue depth
+outbound_queue_depth: 64
+
+# Maximum servo command rate (Hz)
+servo_max_rate_hz: 20.0
+
+# Message IDs to always process (others may be dropped under load)
+critical_message_ids:
+  - 0    # HEARTBEAT
+  - 30   # ATTITUDE
+  - 33   # GLOBAL_POSITION_INT
+  - 1    # SYS_STATUS
+  - 76   # COMMAND_LONG
+
+# ArduPilot custom mode map subset (mode number -> name) for logging
+ardupilot_copter_modes:
+  0: STABILIZE
+  1: ACRO
+  2: ALT_HOLD
+  3: AUTO
+  4: GUIDED
+  5: LOITER
+  6: RTL
+  7: CIRCLE
+  9: LAND
+  11: DRIFT
+  13: TAKEOFF
+  17: BRAKE

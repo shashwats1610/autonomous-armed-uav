@@ -1,0 +1,9 @@
+logs/*
+!logs/.gitkeep
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.tlog
+*.csv.gz

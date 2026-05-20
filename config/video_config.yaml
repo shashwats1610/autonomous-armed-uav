@@ -1,0 +1,50 @@
+# Video streaming configuration
+
+# Ground station UDP target
+ground_station_ip: 192.168.1.100
+ground_station_port: 5600
+
+# Stream resolution and frame rate
+width: 1280
+height: 720
+framerate: 30
+
+# Target bitrate in bits per second
+bitrate_bps: 2000000
+
+# Bitrate steps when thermal throttling (highest first)
+thermal_bitrate_steps:
+  - 2000000
+  - 1500000
+  - 1000000
+  - 500000
+
+# Camera CLI preference: auto | rpicam | libcamera
+camera_cli: auto
+
+# Enable telemetry OSD overlay via FFmpeg drawtext
+osd_enabled: true
+
+# Path to OSD state JSON (written by main.py)
+osd_state_file: /run/companion/osd_state.json
+
+# Path to OSD text file for FFmpeg drawtext reload=1
+osd_text_file: /run/companion/osd_overlay.txt
+
+# Path to thermal alert JSON (written by system_monitor.py)
+thermal_alert_file: /run/companion/thermal_alert.json
+
+# Minimum seconds between thermal-driven pipeline restarts
+thermal_restart_debounce_s: 30.0
+
+# Camera init retry settings
+camera_retry_initial_s: 2.0
+camera_retry_max_s: 60.0
+camera_max_retries: 0  # 0 = unlimited
+
+# FFmpeg process restart backoff
+ffmpeg_retry_initial_s: 3.0
+ffmpeg_retry_max_s: 30.0
+
+# Use inline H.264 from camera (enables FFmpeg copy mode when OSD off)
+use_inline_h264: true

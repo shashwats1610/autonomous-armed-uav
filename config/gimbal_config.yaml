@@ -1,0 +1,57 @@
+# Gimbal stabilization configuration
+
+# Servo output channels on Pixhawk (1-based)
+servo_channels:
+  roll: 9
+  pitch: 10
+  yaw: 11
+  trigger: 12
+
+# PWM limits in microseconds
+pwm_min_us: 1000
+pwm_max_us: 2000
+
+# Home/neutral PWM per axis
+home_pwm:
+  roll: 1500
+  pitch: 1500
+  yaw: 1500
+
+# Control loop update rate (Hz)
+update_hz: 20.0
+
+# Gimbal CSV log rate (Hz); control still runs at update_hz
+gimbal_log_hz: 5.0
+
+# Attitude low-pass filter cutoff (Hz)
+attitude_lpf_cutoff_hz: 0.1
+
+# Mechanical angle limits (degrees)
+limits_deg:
+  roll_min: -45.0
+  roll_max: 45.0
+  pitch_min: -90.0
+  pitch_max: 30.0
+
+# PID gains per axis (roll, pitch) - yaw is manual passthrough
+pid:
+  roll:
+    kp: 1.2
+    ki: 0.05
+    kd: 0.15
+  pitch:
+    kp: 1.2
+    ki: 0.05
+    kd: 0.15
+
+# Max PID output (degrees)
+pid_output_limit_deg: 45.0
+
+# Attitude data stale timeout before disabling stabilization (seconds)
+attitude_timeout_s: 2.0
+
+# Manual yaw setpoint in degrees (operator pan)
+manual_yaw_deg: 0.0
+
+# Degrees per PWM microsecond (linear map around neutral)
+deg_per_us: 0.09

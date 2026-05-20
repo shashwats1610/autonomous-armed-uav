@@ -1,0 +1,20 @@
+[Unit]
+Description=Raspberry Pi Companion Computer - Main Orchestrator
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/autonomous-armed-uav
+Environment=PYTHONUNBUFFERED=1
+Environment=RPI_COMPANION_ROOT=/home/pi/autonomous-armed-uav
+ExecStart=/usr/bin/python3 /home/pi/autonomous-armed-uav/scripts/main.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

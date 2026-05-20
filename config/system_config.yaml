@@ -1,0 +1,74 @@
+# System-wide companion computer settings
+
+# Runtime IPC directory (created on startup)
+runtime_dir: /run/companion
+
+# Log directory (relative to project root or absolute)
+log_dir: logs
+
+# Maximum log size per prefix before rotation (bytes)
+log_rotation_max_bytes: 1073741824  # 1 GB
+
+# Flush .tlog to disk every N MAVLink messages
+tlog_flush_interval: 100
+
+# Health metrics logging interval (seconds)
+health_interval_s: 10.0
+
+# CPU temperature warning threshold (Celsius)
+thermal_warning_c: 75.0
+
+# CPU temperature critical threshold (Celsius)
+thermal_critical_c: 80.0
+
+# Thermal sysfs path
+thermal_sysfs: /sys/class/thermal/thermal_zone0/temp
+
+# Optional power supply sysfs (empty = skip)
+power_supply_sysfs: /sys/class/power_supply
+
+# Low battery threshold (percent from SYS_STATUS)
+low_battery_percent: 15
+
+# Graceful shutdown on low battery
+shutdown_on_low_battery: true
+
+# Seconds between repeated thermal STATUSTEXT warnings
+thermal_statustext_interval_s: 60.0
+
+# Trigger safety (ArduPilot)
+trigger:
+  servo_channel: 12
+  pwm_safe_us: 1000
+  pwm_actuated_us: 2000
+  cooldown_s: 2.0
+  # MAV_CMD for trigger (183 = DO_SET_SERVO, use param1=channel)
+  command_id: 183
+  # Minimum altitude AGL in meters
+  min_altitude_m: 10.0
+  # Stale GPS position timeout (seconds)
+  position_timeout_s: 2.0
+  # Allowed ArduPilot mode names (custom_mode string)
+  allowed_modes:
+    - LOITER
+    - GUIDED
+    - AUTO
+  # Blocked modes during takeoff/landing
+  blocked_modes:
+    - TAKEOFF
+    - LAND
+    - RTL
+
+# Watchdog heartbeat files (monitor reads only; does not write main heartbeat)
+watchdog:
+  main_stale_s: 30.0
+  video_stale_s: 45.0
+  main_heartbeat_file: /run/companion/watchdog_main.heartbeat
+  video_heartbeat_file: /run/companion/watchdog_video.heartbeat
+  restart_cooldown_s: 60.0
+
+# OSD writer rate (Hz)
+osd_update_hz: 10.0
+
+# Project root (override if installed elsewhere)
+project_root: ""
